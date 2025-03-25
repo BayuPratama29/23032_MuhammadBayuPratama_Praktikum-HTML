@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            margin: auto;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        #hasilKalkulator {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Kalkulator Sederhana</h2>
+        <input type="number" id="angka1" placeholder="Angka pertama">
+        <input type="number" id="angka2" placeholder="Angka kedua">
+        
+        <div class="buttons">
+            <button onclick="hitung('+')">+</button>
+            <button onclick="hitung('-')">-</button>
+            <button onclick="hitung('*')">×</button>
+            <button onclick="hitung('/')">÷</button>
+            <button onclick="hitung('%')">%</button>
+        </div>
+
+        <p id="hasilKalkulator"></p>
+    </div>
+
+    <script>
+        const operasi = {
+            '+': (a, b) => a + b,
+            '-': (a, b) => a - b,
+            '*': (a, b) => a * b,
+            '/': (a, b) => b !== 0 ? a / b : "Tidak bisa dibagi 0",
+            '%': (a, b) => a % b
+        };
+
+        const hitung = (operator) => {
+            let angka1 = parseFloat(document.getElementById("angka1").value);
+            let angka2 = parseFloat(document.getElementById("angka2").value);
+
+            if (isNaN(angka1) || isNaN(angka2)) {
+                document.getElementById("hasilKalkulator").innerText = "Masukkan angka yang valid!";
+                return;
+            }
+
+            let hasil = operasi[operator](... [angka1, angka2]);
+            document.getElementById("hasilKalkulator").innerText = `Hasil: ${hasil}`;
+        };
+    </script>
+
+</body>
+</html>
