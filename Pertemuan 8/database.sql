@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS my_blog;
+USE my_blog;
+
+CREATE TABLE IF NOT EXISTS user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
